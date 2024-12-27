@@ -81,14 +81,20 @@ export function DecisionMatrix() {
                   className="text-center space-y-1"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Badge variant="outline" className="bg-purple-50">
+                  <Badge
+                    variant="outline"
+                    className="bg-purple-50 dark:bg-purple-950/50 dark:text-purple-100 dark:border-purple-800"
+                  >
                     {item.phdEmoji} {item.phd}
                   </Badge>
                 </motion.div>
 
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Badge variant="secondary" className="whitespace-nowrap">
+                    <Badge
+                      variant="secondary"
+                      className="whitespace-nowrap dark:bg-slate-800"
+                    >
                       {item.aspect}
                     </Badge>
                   </div>
@@ -99,7 +105,10 @@ export function DecisionMatrix() {
                   className="text-center space-y-1"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Badge variant="outline" className="bg-pink-50">
+                  <Badge
+                    variant="outline"
+                    className="bg-pink-50 dark:bg-pink-950/50 dark:text-pink-100 dark:border-pink-800"
+                  >
                     {item.ofEmoji} {item.onlyfans}
                   </Badge>
                 </motion.div>
