@@ -24,7 +24,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-background to-muted p-4 md:p-8">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-6">
-          <div className="flex justify-center gap-8 items-center">
+          {/* <div className="flex justify-center gap-8 items-center">
             <motion.div
               whileHover="hover"
               variants={iconVariants}
@@ -59,7 +59,7 @@ export default function Home() {
             >
               <Camera className="w-16 h-16 text-pink-500" />
             </motion.div>
-          </div>
+          </div> */}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h1 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-              PhD vs OnlyFans Calculator
+              PhD vs OnlyFans
             </h1>
             <p className="text-muted-foreground text-lg mt-2">
               Because sometimes life&apos;s biggest decisions need a spreadsheet 📊

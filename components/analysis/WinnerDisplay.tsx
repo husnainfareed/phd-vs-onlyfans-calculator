@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Camera } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 interface WinnerDisplayProps {
   winner: "PhD" | "OnlyFans";
@@ -10,9 +10,9 @@ interface WinnerDisplayProps {
 }
 
 export function WinnerDisplay({ winner, score }: WinnerDisplayProps) {
-  const Icon = winner === "PhD" ? GraduationCap : Camera;
   const color = winner === "PhD" ? "text-purple-500" : "text-pink-500";
   const bgColor = winner === "PhD" ? "bg-purple-100" : "bg-pink-100";
+  const imagePath = winner === "PhD" ? "/phd.webp" : "/onlyfans.png";
 
   return (
     <motion.div
@@ -24,10 +24,17 @@ export function WinnerDisplay({ winner, score }: WinnerDisplayProps) {
       <h3 className="text-2xl font-bold">Recommended Path</h3>
 
       <motion.div
-        className={`mx-auto w-24 h-24 rounded-full ${bgColor} flex items-center justify-center`}
+        className={`mx-auto w-24 h-24 rounded-full ${bgColor} relative overflow-hidden`}
         whileHover={{ scale: 1.05 }}
       >
-        <Icon className={`w-12 h-12 ${color}`} />
+        <Image
+          src={imagePath}
+          alt={`${winner} Career Path`}
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="96px"
+        />
       </motion.div>
 
       <div>

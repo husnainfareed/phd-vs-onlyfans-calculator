@@ -119,7 +119,7 @@ export function FinancialCalculator() {
               {loadingMessage}
             </motion.div>
           ) : (
-            "Calculate Your Career Path"
+            "Calculate Decision Score"
           )}
         </Button>
       </div>
