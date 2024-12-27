@@ -1,6 +1,6 @@
 "use client";
 
-import { Calculator, GraduationCap, Camera } from "lucide-react";
+import { Calculator, GraduationCap, CalendarDays } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CareerPath } from "@/components/CareerPath";
@@ -87,7 +87,7 @@ export default function Home() {
               Show Me The Money
             </TabsTrigger>
             <TabsTrigger value="lifestyle">
-              <Camera className="mr-2 h-4 w-4" />
+              <CalendarDays className="mr-2 h-4 w-4" />
               Daily Life
             </TabsTrigger>
             <TabsTrigger value="matrix">
