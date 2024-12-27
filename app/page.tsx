@@ -4,9 +4,9 @@ import { Calculator, GraduationCap, Camera } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CareerPath } from "@/components/CareerPath";
-import FinancialCalculator from "@/components/FinancialCalculator";
-import LifestyleComparison from "@/components/LifestyleComparison";
-import DecisionMatrix from "@/components/DecisionMatrix";
+import { FinancialCalculator } from "@/components/FinancialCalculator";
+import { LifestyleComparison } from "@/components/LifestyleComparison";
+import { DecisionMatrix } from "@/components/DecisionMatrix";
 import { motion } from "framer-motion";
 
 const iconVariants = {

@@ -10,7 +10,7 @@ import { calculateFinancialProjections } from "@/lib/calculations";
 import { analyzeCareerPaths } from "@/lib/analysis";
 import { motion } from "framer-motion";
 
-export default function FinancialCalculator() {
+export function FinancialCalculator() {
   // Academic metrics
   const [stipend, setStipend] = useState(30000);
   const [yearsLeft, setYearsLeft] = useState(3);
