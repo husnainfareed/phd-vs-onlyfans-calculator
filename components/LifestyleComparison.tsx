@@ -84,13 +84,19 @@ export function LifestyleComparison() {
                   className="text-right space-y-1"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Badge variant="outline" className="bg-purple-50">
+                  <Badge
+                    variant="outline"
+                    className="bg-purple-50 dark:bg-purple-950/50 dark:text-purple-100 dark:border-purple-800"
+                  >
                     {slot.phd.emoji} {slot.phd.activity}
                   </Badge>
                 </motion.div>
 
                 <div className="flex items-center justify-center">
-                  <Badge variant="secondary" className="flex items-center gap-1">
+                  <Badge
+                    variant="secondary"
+                    className="flex items-center gap-1 dark:bg-slate-800"
+                  >
                     <Clock className="w-3 h-3" />
                     {slot.time}
                   </Badge>
@@ -100,7 +106,10 @@ export function LifestyleComparison() {
                   className="text-left space-y-1"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Badge variant="outline" className="bg-pink-50">
+                  <Badge
+                    variant="outline"
+                    className="bg-pink-50 dark:bg-pink-950/50 dark:text-pink-100 dark:border-pink-800"
+                  >
                     {slot.onlyfans.emoji} {slot.onlyfans.activity}
                   </Badge>
                 </motion.div>
