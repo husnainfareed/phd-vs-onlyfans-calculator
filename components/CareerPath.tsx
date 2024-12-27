@@ -17,12 +17,15 @@ export function CareerPath({ type, selected, onClick }: CareerPathProps) {
   const borderColor = isPhD ? "border-purple-500" : "border-pink-500";
   const bgHover = isPhD ? "hover:bg-purple-50" : "hover:bg-pink-50";
   const Icon = isPhD ? Brain : DollarSign;
-  const title = isPhD ? "Academic Excellence" : "Content Creation";
-  const subtitle = isPhD ? "The Traditional Path" : "The Modern Path";
+  const title = isPhD ? "PhD Life" : "OnlyFans Life";
+  const subtitle = isPhD ? "Ramen & Research" : "Lights & Likes";
+  const quirkyQuote = isPhD
+    ? "Where coffee meets quantum physics"
+    : "Where selfies meet success";
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.02, rotate: isPhD ? -1 : 1 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
     >
@@ -49,6 +52,7 @@ export function CareerPath({ type, selected, onClick }: CareerPathProps) {
               <h3>{title}</h3>
             </div>
             <p className="text-sm text-muted-foreground">{subtitle}</p>
+            <p className="text-xs italic text-muted-foreground">{quirkyQuote}</p>
           </div>
         </div>
       </Card>

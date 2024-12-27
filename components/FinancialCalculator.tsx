@@ -8,6 +8,7 @@ import { EarningsChart } from "./charts/EarningsChart";
 import { AnalysisResult } from "./analysis/AnalysisResult";
 import { calculateFinancialProjections } from "@/lib/calculations";
 import { analyzeCareerPaths } from "@/lib/analysis";
+import { motion } from "framer-motion";
 
 export default function FinancialCalculator() {
   // Academic metrics
@@ -15,22 +16,45 @@ export default function FinancialCalculator() {
   const [yearsLeft, setYearsLeft] = useState(3);
   const [stressLevel, setStressLevel] = useState(8);
   const [publicationCount, setPublicationCount] = useState(2);
-  
+
   // OnlyFans metrics
   const [followers, setFollowers] = useState(5000);
   const [contentComfort, setContentComfort] = useState(7);
-  const [marketingSkills, setMarketingSkills] = useState(6);
+  const [attractiveness, setAttractiveness] = useState(7);
   const [competitionLevel, setCompetitionLevel] = useState(8);
 
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [analysis, setAnalysis] = useState<any>(null);
 
-  const projectedSubscribers = Math.round(followers * (contentComfort / 10) * (marketingSkills / 10));
+  const [isCalculating, setIsCalculating] = useState(false);
+  const calculatingMessages = [
+    "Consulting the academic gods...",
+    "Analyzing Instagram algorithms...",
+    "Calculating coffee consumption...",
+    "Measuring ring light intensity...",
+  ];
+  const [loadingMessage, setLoadingMessage] = useState(calculatingMessages[0]);
+
+  const projectedSubscribers = Math.round(
+    followers * (contentComfort / 10) * (attractiveness / 10)
+  );
   const subscriptionPrice = 15;
 
   const data = calculateFinancialProjections(stipend, projectedSubscribers, subscriptionPrice);
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
+    setIsCalculating(true);
+    // Cycle through fun messages
+    let messageIndex = 0;
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % calculatingMessages.length;
+      setLoadingMessage(calculatingMessages[messageIndex]);
+    }, 800);
+
+    // Simulate calculation time
+    await new Promise(resolve => setTimeout(resolve, 2400));
+    clearInterval(messageInterval);
+
     const result = analyzeCareerPaths({
       stipend,
       yearsLeft,
@@ -38,11 +62,12 @@ export default function FinancialCalculator() {
       publicationCount,
       followers,
       contentComfort,
-      marketingSkills,
+      attractiveness,
       competitionLevel
     });
     setAnalysis(result);
     setShowAnalysis(true);
+    setIsCalculating(false);
   };
 
   return (
@@ -58,14 +83,14 @@ export default function FinancialCalculator() {
           publicationCount={publicationCount}
           setPublicationCount={setPublicationCount}
         />
-        
+
         <OnlyFansMetrics
           followers={followers}
           setFollowers={setFollowers}
           contentComfort={contentComfort}
           setContentComfort={setContentComfort}
-          marketingSkills={marketingSkills}
-          setMarketingSkills={setMarketingSkills}
+          attractiveness={attractiveness}
+          setAttractiveness={setAttractiveness}
           competitionLevel={competitionLevel}
           setCompetitionLevel={setCompetitionLevel}
           projectedSubscribers={projectedSubscribers}
@@ -73,12 +98,29 @@ export default function FinancialCalculator() {
       </div>
 
       <div className="flex justify-center">
-        <Button 
+        <Button
           size="lg"
           onClick={handleCalculate}
+          disabled={isCalculating}
           className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
         >
-          Calculate Your Career Path
+          {isCalculating ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex items-center gap-2"
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              >
+                ⚡
+              </motion.div>
+              {loadingMessage}
+            </motion.div>
+          ) : (
+            "Calculate Your Career Path"
+          )}
         </Button>
       </div>
 

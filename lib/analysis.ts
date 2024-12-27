@@ -8,7 +8,7 @@ interface CareerMetrics {
 	// OnlyFans metrics
 	followers: number;
 	contentComfort: number;
-	marketingSkills: number;
+	attractiveness: number;
 	competitionLevel: number;
 }
 
@@ -52,7 +52,7 @@ function calculateOfScore(metrics: CareerMetrics): number {
 	// More realistic scoring based on market factors
 	const followersScore = (metrics.followers / 100000) * 30; // Max 30 points
 	const comfortScore = (metrics.contentComfort / 10) * 20; // Max 20 points
-	const marketingScore = (metrics.marketingSkills / 10) * 25; // Max 25 points
+	const attractivenessScore = (metrics.attractiveness / 10) * 25; // Max 25 points
 	const competitionPenalty = (metrics.competitionLevel / 10) * 15; // Max 15 points penalty
 	const platformRiskScore = 10; // Fixed points accounting for platform stability
 
@@ -60,7 +60,7 @@ function calculateOfScore(metrics: CareerMetrics): number {
 		100,
 		followersScore +
 			comfortScore +
-			marketingScore +
+			attractivenessScore +
 			platformRiskScore -
 			competitionPenalty
 	);
@@ -70,51 +70,39 @@ function generatePhdAnalysis(metrics: CareerMetrics): string[] {
 	const analysis = [];
 
 	if (metrics.stipend < 25000) {
-		analysis.push('Low stipend - consider additional funding sources');
+		analysis.push('Ramen noodles will be your best friend 🍜');
 	} else if (metrics.stipend > 35000) {
-		analysis.push('Competitive stipend - good financial foundation');
+		analysis.push('Wow, you might afford real food! 🥑');
 	}
 
 	if (metrics.publicationCount >= 3) {
-		analysis.push(
-			'Strong publication record - well positioned for academia'
-		);
-	} else if (metrics.publicationCount <= 1) {
-		analysis.push('Focus on increasing publication output');
+		analysis.push('Your citation game is stronger than your coffee ☕');
 	}
 
 	if (metrics.stressLevel > 7) {
-		analysis.push('High stress - consider work-life balance strategies');
+		analysis.push('Time to befriend the campus therapy dog 🐕');
 	}
 
-	// Add more targeted advice based on metrics
 	return analysis;
 }
 
 function generateOfAnalysis(metrics: CareerMetrics): string[] {
 	const analysis = [];
 
-	const projectedIncome = metrics.followers * 0.05 * 15; // Assume 5% conversion rate at $15
-
-	if (metrics.followers < 10000) {
-		analysis.push('Focus on building social media presence first');
-	} else if (metrics.followers > 50000) {
-		analysis.push(
-			`Potential monthly income: $${projectedIncome.toLocaleString()}`
-		);
+	if (metrics.followers > 50000) {
+		analysis.push('Move over Kardashians! 👑');
 	}
 
-	if (metrics.marketingSkills < 6) {
-		analysis.push('Invest in marketing and personal branding skills');
+	if (metrics.attractiveness >= 8) {
+		analysis.push('The camera loves you more than it loves sleep 📸');
 	}
 
 	if (metrics.competitionLevel > 7) {
 		analysis.push(
-			'High competition - need strong differentiation strategy'
+			'The thirst trap market is saturated, time to innovate! 💡'
 		);
 	}
 
-	// Add more market-based advice
 	return analysis;
 }
 
